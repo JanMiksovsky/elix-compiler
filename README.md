@@ -1,1 +1,1 @@
-# elix-compiler
+This is an experimental compiler to play with the idea of using the Elix component kernel, including the [ReactiveElement](https://elix.org/documentation/ReactiveElement) as a web component compile target.
