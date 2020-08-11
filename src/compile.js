@@ -9,7 +9,8 @@ function compile(html, css) {
   const references = findReferences(template.content);
   const render = generateRender(references);
   const templateGetter = generateTemplateGetter(template, css);
-  return `import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
+  return `// Generated code
+import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
 import { templateFrom } from "elix/src/core/htmlLiterals";
 import SpinBox from "../SpinBox";
 export default class SpinBoxComplete extends SpinBox {

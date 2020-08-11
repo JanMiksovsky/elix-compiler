@@ -1,3 +1,4 @@
+// Generated code
 import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
 import { templateFrom } from "elix/src/core/htmlLiterals";
 import SpinBox from "../SpinBox";
@@ -29,6 +30,7 @@ export default class SpinBoxComplete extends SpinBox {
   get [template]() {
     return templateFrom.html`
         <style>
+/* Structural styling */
 :host {
   display: inline-grid;
 }
@@ -45,6 +47,7 @@ export default class SpinBoxComplete extends SpinBox {
   user-select: none;
 }
 
+/* Plain aesthetic styling */
 :host {
   background: white;
   border: 1px solid gray;
