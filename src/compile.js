@@ -2,22 +2,18 @@ const JSDOM = require("jsdom").JSDOM;
 
 let generatedIdCount = 0;
 
-function compile(source) {
-  const dom = new JSDOM(source);
+function compile(html, css) {
+  const dom = new JSDOM(html);
   const window = dom.window;
   const template = window.document.querySelector("template");
   const references = findReferences(template.content);
   const render = generateRender(references);
-  const shadow = serializeTemplateContents(template);
+  const templateGetter = generateTemplateGetter(template, css);
   return `import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
 import { templateFrom } from "elix/src/core/htmlLiterals";
 import SpinBox from "./SpinBox";
 export default class SpinBoxComplete extends SpinBox {
-${render}
-  get [template]() {
-    return templateFrom.html\`${shadow}\`;
-  }
-}
+${render}${templateGetter}}
 customElements.define("spin-box", SpinBoxComplete);
 `;
 }
@@ -65,6 +61,20 @@ ${firstRenderBlock}${updateBlock}
   }
 `;
   return render;
+}
+
+function generateTemplateGetter(template, css) {
+  const shadow = serializeTemplateContents(template);
+  const style = css
+    ? `
+        <style>
+${css}
+        </style>`
+    : "";
+  return `
+    get [template]() {
+      return templateFrom.html\`${style}${shadow}\`;
+    }`;
 }
 
 function findReferences(tree) {

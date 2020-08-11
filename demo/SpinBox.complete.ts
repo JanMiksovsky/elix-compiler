@@ -26,56 +26,57 @@ export default class SpinBoxComplete extends SpinBox {
     }
   }
 
-  get [template]() {
-    return templateFrom.html`
-  <style>
-    :host {
-      display: inline-grid;
-    }
+    get [template]() {
+      return templateFrom.html`
+        <style>
+:host {
+  display: inline-grid;
+}
 
-    [part~="input"] {
-      grid-row-end: 3;
-      grid-row-start: 1;
-      outline: none;
-      text-align: right;
-    }
+[part~="input"] {
+  grid-row-end: 3;
+  grid-row-start: 1;
+  outline: none;
+  text-align: right;
+}
 
-    [part~="spin-button"] {
-      grid-column: 2;
-      user-select: none;
-    }
+[part~="spin-button"] {
+  grid-column: 2;
+  user-select: none;
+}
 
-    :host {
-      background: white;
-      border: 1px solid gray;
-      box-sizing: border-box;
-    }
+:host {
+  background: white;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
 
-    [part~="input"] {
-      background: transparent;
-      border: none;
-      width: 4em;
-    }
+[part~="input"] {
+  background: transparent;
+  border: none;
+  width: 4em;
+}
 
-    [part~="spin-button"] {
-      background: transparent;
-      border: 1px solid gray;
-      box-sizing: border-box;
-      font-size: 0.6em;
-      padding: 2px;
-    }
+[part~="spin-button"] {
+  background: transparent;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  font-size: 0.6em;
+  padding: 2px;
+}
 
-    [part~="up-button"] {
-      border-right: none;
-      border-top: none;
-    }
+[part~="up-button"] {
+  border-right: none;
+  border-top: none;
+}
 
-    [part~="down-button"] {
-      border-bottom: none;
-      border-right: none;
-      border-top: none;
-    }
-  </style>
+[part~="down-button"] {
+  border-bottom: none;
+  border-right: none;
+  border-top: none;
+}
+
+        </style>
   <input id="input" part="input">
   <div part="spin-button up-button" tabindex="-1" id="_id0">
     ▲
@@ -84,6 +85,5 @@ export default class SpinBoxComplete extends SpinBox {
     ▼
   </div>
 `;
-  }
-}
+    }}
 customElements.define("spin-box", SpinBoxComplete);
