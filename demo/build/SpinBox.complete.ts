@@ -1,6 +1,6 @@
 import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
 import { templateFrom } from "elix/src/core/htmlLiterals";
-import SpinBox from "./SpinBox";
+import SpinBox from "../SpinBox";
 export default class SpinBoxComplete extends SpinBox {
   [render](changed) {
     super[render](changed);
@@ -26,8 +26,8 @@ export default class SpinBoxComplete extends SpinBox {
     }
   }
 
-    get [template]() {
-      return templateFrom.html`
+  get [template]() {
+    return templateFrom.html`
         <style>
 :host {
   display: inline-grid;
@@ -85,5 +85,6 @@ export default class SpinBoxComplete extends SpinBox {
     ▼
   </div>
 `;
-    }}
+  }
+}
 customElements.define("spin-box", SpinBoxComplete);

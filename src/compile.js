@@ -11,9 +11,10 @@ function compile(html, css) {
   const templateGetter = generateTemplateGetter(template, css);
   return `import { ids, firstRender, raiseChangeEvents, render, state, template } from "elix/src/core/internal";
 import { templateFrom } from "elix/src/core/htmlLiterals";
-import SpinBox from "./SpinBox";
+import SpinBox from "../SpinBox";
 export default class SpinBoxComplete extends SpinBox {
-${render}${templateGetter}}
+${render}${templateGetter}
+}
 customElements.define("spin-box", SpinBoxComplete);
 `;
 }
@@ -72,9 +73,9 @@ ${css}
         </style>`
     : "";
   return `
-    get [template]() {
-      return templateFrom.html\`${style}${shadow}\`;
-    }`;
+  get [template]() {
+    return templateFrom.html\`${style}${shadow}\`;
+  }`;
 }
 
 function findReferences(tree) {

@@ -1,4 +1,4 @@
-import SpinBoxComplete from "./SpinBox.complete";
+import SpinBoxComplete from "./build/SpinBox.complete";
 
 if (SpinBoxComplete) {
 }
